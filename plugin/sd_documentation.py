@@ -1,4 +1,4 @@
-"""
+﻿"""
 SD MCP Documentation Knowledge Base v1.0
 ==========================================
 Complete embedded reference for Substance 3D Designer nodes, parameters,
@@ -8,7 +8,7 @@ This file is a STATIC knowledge base. It does NOT require internet access.
 All data sourced from:
   - Adobe Substance 3D Designer official documentation
   - Live SD 15.0.3 API introspection (confirmed port names)
-  - Javier Perez SubstanceGraph1 analysis (512 nodes, real-world patterns)
+  - pro SubstanceGraph1 analysis (512 nodes, real-world patterns)
   - SD MCP plugin empirical testing
 
 Usage via MCP:
@@ -398,7 +398,7 @@ ATOMIC_NODES = {
         },
         "parameters": {},
         "tips": [
-            "Heavy use in professional graphs (52 passthroughs in Javier's graph)",
+            "Heavy use in professional graphs (52 passthroughs in pro graph)",
             "Use for signal routing clarity and sub-graph organization",
             "Does NOT change pixel values",
         ],
@@ -551,7 +551,7 @@ LIBRARY_NODES = {
         "description": (
             "The primary professional noise generator. Produces multi-octave "
             "cloud/fractal noise. Heavy use in expert graphs (41 instances in "
-            "Javier Perez's 512-node graph). More natural than Perlin."
+            "pro 512-node graph). More natural than Perlin."
         ),
         "output_id": "output",
         "outputs": {"output": "grayscale"},
@@ -564,7 +564,7 @@ LIBRARY_NODES = {
         "tips": [
             "Best overall noise for rock, concrete, soil, organic materials",
             "Chain: clouds_2 → slope_blur → directionalwarp for organic surfaces",
-            "clouds_2 → multi_directional_warp → blend is a Javier signature pattern",
+            "clouds_2 → multi_directional_warp → blend is a pro signature pattern",
         ],
     },
 
@@ -608,7 +608,7 @@ LIBRARY_NODES = {
             "scale":      {"type": "float", "default": 1.0, "description": "Scale"},
             "randomseed": {"type": "int",   "default": 0,   "description": "Random seed"},
         },
-        "tips": ["9 uses in Javier's graph for rock fracture detail"],
+        "tips": ["9 uses in pro graph for rock fracture detail"],
     },
 
     "tile_sampler": {
@@ -631,7 +631,7 @@ LIBRARY_NODES = {
             "scale":          {"type": "float", "default": 1.0, "description": "Overall scale"},
             "rotation":       {"type": "float", "default": 0.0, "description": "Random rotation amount"},
         },
-        "tips": ["5 uses in Javier's graph", "Connect an input shape for custom tile shapes"],
+        "tips": ["5 uses in pro graph", "Connect an input shape for custom tile shapes"],
     },
 
     "polygon_2": {
@@ -691,7 +691,7 @@ LIBRARY_NODES = {
         },
         "tips": [
             "Output is 'Blur_HQ' NOT 'output'",
-            "14 uses in Javier's graph — always preferred for warp prep",
+            "14 uses in pro graph — always preferred for warp prep",
             "Chain before directionalwarp/warp for clean distortion",
         ],
     },
@@ -718,7 +718,7 @@ LIBRARY_NODES = {
         },
         "tips": [
             "Output is 'Slope_Blur' NOT 'output'",
-            "22 uses in Javier's graph — signature pattern for rock detail",
+            "22 uses in pro graph — signature pattern for rock detail",
             "clouds_2 → slope_blur → slope_blur creates layered surface detail",
             "Cascade 2 slope_blurs with different intensities for complexity",
         ],
@@ -734,7 +734,7 @@ LIBRARY_NODES = {
         "key_parameters": {},
         "tips": [
             "Output is 'Invert_Grayscale' NOT 'output'",
-            "10 uses in Javier's graph for mask inversion",
+            "10 uses in pro graph for mask inversion",
         ],
     },
 
@@ -784,7 +784,7 @@ LIBRARY_NODES = {
         },
         "tips": [
             "Input port is 'input' NOT 'input1'",
-            "24 uses in Javier's graph — key for ridge masks",
+            "24 uses in pro graph — key for ridge masks",
             "Chain: clouds_2 → slope_blur → edge_detect → blend",
             "edge_detect → flood_fill is a classic seeding pattern",
         ],
@@ -810,7 +810,7 @@ LIBRARY_NODES = {
             "advanced": {"type": "bool", "default": False, "description": "Enable advanced options"},
         },
         "tips": [
-            "23 uses in Javier's graph — essential for variation",
+            "23 uses in pro graph — essential for variation",
             "edge_detect → flood_fill: edges define island boundaries",
             "Output is COLOR (each island has unique color, not grayscale!)",
             "Connect to flood_fill_to_gradient_2 or flood_fill_to_grayscale after",
@@ -833,7 +833,7 @@ LIBRARY_NODES = {
             "angle_variation": {"type": "float", "default": 0.0, "description": "Random angle variation per island"},
         },
         "tips": [
-            "18 uses in Javier's graph — classic flood_fill → gradient_2 chain",
+            "18 uses in pro graph — classic flood_fill → gradient_2 chain",
             "Input port: 'input' (not 'input1')",
             "Output: grayscale gradient per island (great for shape variation)",
         ],
@@ -854,7 +854,7 @@ LIBRARY_NODES = {
             "luminance_random":      {"type": "float", "default": 0.5, "description": "Luminance variation range"},
         },
         "tips": [
-            "7 uses in Javier's graph",
+            "7 uses in pro graph",
             "Input port: 'input' (not 'input1')",
             "Creates per-island grayscale variation for blend masks",
         ],
@@ -867,7 +867,7 @@ LIBRARY_NODES = {
         "description": (
             "Warps a grayscale image in multiple directions simultaneously. "
             "More complex distortion than directionalwarp. "
-            "Key node in Javier Perez's professional rock/concrete recipes."
+            "Key node in pro professional rock/concrete recipes."
         ),
         "output_id": "output",
         "outputs": {"output": "grayscale"},
@@ -882,7 +882,7 @@ LIBRARY_NODES = {
             "directions":  {"type": "int",   "default": 4,   "description": "Number of warp directions"},
         },
         "tips": [
-            "26 uses in Javier's graph — key complexity node",
+            "26 uses in pro graph — key complexity node",
             "Cascade 2× for much richer surface detail",
             "clouds_2 → multi_dir_warp → multi_dir_warp is signature chain",
             "Input ports: 'input', 'intensity_input'",
@@ -908,7 +908,7 @@ LIBRARY_NODES = {
         "tips": [
             "Output is 'Highpass' NOT 'output'",
             "Input port is 'Source' NOT 'input1'",
-            "5 uses in Javier's graph for micro-detail extraction",
+            "5 uses in pro graph for micro-detail extraction",
             "Chain at end of stack: main_shape → ... → highpass → blend(Add) for detail overlay",
         ],
     },
@@ -934,7 +934,7 @@ LIBRARY_NODES = {
         },
         "tips": [
             "Output is 'Output' (capital O), input is 'Input_1'",
-            "6 uses in Javier's graph at final stage",
+            "6 uses in pro graph at final stage",
             "Contrast=1.0 → binary mask; Contrast=0.0 → smooth gradient",
             "Perfect for controlling how much of a noise shape is visible",
         ],
@@ -1116,8 +1116,8 @@ PBR_OUTPUTS = {
 # ════════════════════════════════════════════════════════════════════════════
 
 CONNECTION_PATTERNS = {
-    "javier_perez_signature": {
-        "description": "Core patterns from Javier Perez's 512-node professional graph (MeshModeler)",
+    "pro_perez_signature": {
+        "description": "Core patterns from pro 512-node professional graph (MeshModeler)",
         "patterns": [
             {
                 "name": "Cloud-driven slope flow",

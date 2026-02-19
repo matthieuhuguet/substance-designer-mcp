@@ -1,6 +1,6 @@
-"""
-SD MCP Recipe System v5.0 — Professional Grade (Javier Perez Architecture)
-Based on deep analysis of SubstanceGraph1 (512 nodes, Javier Perez / MeshModeler).
+﻿"""
+SD MCP Recipe System v5.0 — Professional Grade (pro Architecture)
+Based on deep analysis of SubstanceGraph1 (512 nodes, pro / MeshModeler).
 
 === SubstanceGraph1 Node Type Distribution ===
   275  sbscompgraph_instance  (library nodes — the workhorse)
@@ -14,7 +14,7 @@ Based on deep analysis of SubstanceGraph1 (512 nodes, Javier Perez / MeshModeler
     3  warp                   (large-scale displacement)
     2  blur                   (HQ blur for warp maps)
 
-=== Top Library Nodes (by usage in Javier's graph) ===
+=== Top Library Nodes (by usage in pro graph) ===
    41  clouds_2               (primary noise generator — heavy use)
    26  multi_directional_warp_grayscale  (KEY: replaces simple warp)
    24  edge_detect            (KEY: ridge/cavity mask from shapes)
@@ -32,7 +32,7 @@ Based on deep analysis of SubstanceGraph1 (512 nodes, Javier Perez / MeshModeler
     5  tile_sampler           (tile-based patterns)
     5  highpass_grayscale     (detail/micro-surface extraction)
 
-=== Key Connection Patterns (Javier's signature chains) ===
+=== Key Connection Patterns (pro signature chains) ===
    38  blend → blend          (additive layering stacks)
    22  levels → blend         (remapped masks into blends)
    18  flood_fill → flood_fill_to_gradient_2  (per-island gradients)
@@ -260,7 +260,7 @@ def _wood_base_recipe(name, description, perlin_scale=12, perlin_disorder=0.05,
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# ROCK RECIPES — Javier Perez RockForm01 pattern
+# ROCK RECIPES — pro RockForm01 pattern
 # ─────────────────────────────────────────────────────────────────────────────
 
 def _rock_base_recipe(name, description, cells_scale=3, perlin_scale=6, polygon_sides=4,
@@ -1228,7 +1228,7 @@ def _painted_metal_recipe(description, color=(0.22, 0.35, 0.58), roughness=0.30,
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# MAIN SHAPE — Exact Javier Perez Data (extracted from SubstanceGraph1)
+# MAIN SHAPE — Exact pro Data (extracted from SubstanceGraph1)
 #
 # Verified parameters from live SD 15.0.3 node inspection:
 #   polygon_2:        Tiling=1, Sides=4, Scale=1.0, Gradient=1.0, autoscale=True
@@ -1256,7 +1256,7 @@ def _painted_metal_recipe(description, color=(0.22, 0.35, 0.58), roughness=0.30,
 # ─────────────────────────────────────────────────────────────────────────────
 
 def _main_shape_recipe():
-    """MainShape — faithful reconstruction from Javier Perez's SubstanceGraph1 data.
+    """MainShape — faithful reconstruction from pro SubstanceGraph1 data.
 
     This is the ~20% foundation that all his rock material shapes are built upon.
     9 nodes / 8 connections — pure procedural, zero library noise generators.
@@ -1327,7 +1327,7 @@ def _main_shape_recipe():
         {"from": "ms_final",      "to": "ms_out",        "from_output": "unique_filter_output",  "to_input": "inputNodeOutput"},
     ]
     return {
-        "description": "MainShape — exact Javier Perez reconstruction from SubstanceGraph1 data. 20% foundation shape feeding IterationPatternShape.",
+        "description": "MainShape — exact pro reconstruction from SubstanceGraph1 data. 20% foundation shape feeding IterationPatternShape.",
         "nodes": nodes,
         "connections": connections,
         "height_alias": "ms_final",
@@ -1338,7 +1338,7 @@ def _main_shape_recipe():
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# PROFESSIONAL ROCK — Javier Perez Architecture
+# PROFESSIONAL ROCK — pro Architecture
 # Pattern: clouds_2 → slope_blur cascade → edge_detect → flood_fill chain
 #          → directionalwarp × N → multi_directional_warp → blend stack
 # ─────────────────────────────────────────────────────────────────────────────
@@ -1346,7 +1346,7 @@ def _main_shape_recipe():
 def _pro_rock_recipe(description, color=(0.50, 0.45, 0.40), roughness=0.88, metallic=0.0,
                      macro_scale=3, mid_scale=6, detail_scale=12, disorder=0.5,
                      shadow_factor=0.45, highlight_factor=1.35):
-    """Professional rock material — Javier Perez pattern (53 nodes).
+    """Professional rock material — pro pattern (53 nodes).
 
     Architecture:
       Stage 1: clouds_2 (macro) → slope_blur → slope_blur (cascade) → base shape
@@ -1469,14 +1469,14 @@ def _pro_rock_recipe(description, color=(0.50, 0.45, 0.40), roughness=0.88, meta
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# PROFESSIONAL METAL — Javier Perez Architecture
+# PROFESSIONAL METAL — pro Architecture
 # Pattern: clouds_2 → multi_dir_warp → edge_detect for scratch/wear
 #          non_uniform_blur (anisotropic) for directional brushing
 # ─────────────────────────────────────────────────────────────────────────────
 
 def _pro_metal_recipe(description, color=(0.65, 0.65, 0.68), roughness=0.25, metallic=1.0,
                       scratch_scale=24, wear_intensity=0.2, shadow_factor=0.3, highlight_factor=1.5):
-    """Professional brushed metal — 45 nodes, Javier Perez workflow.
+    """Professional brushed metal — 45 nodes, pro workflow.
 
     Architecture:
       Stage 1: perlin (fine) + non_uniform_blur (anisotropic) = directional grain
@@ -1574,7 +1574,7 @@ def _pro_metal_recipe(description, color=(0.65, 0.65, 0.68), roughness=0.25, met
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# PROFESSIONAL CONCRETE — Javier Perez Architecture
+# PROFESSIONAL CONCRETE — pro Architecture
 # Flood-fill per-crack-island + multi-dir warp + highpass detail
 # ─────────────────────────────────────────────────────────────────────────────
 
@@ -1811,10 +1811,10 @@ _reg("carbon_fiber",      _carbon_fiber_recipe("Carbon fiber — woven composite
 _reg("painted_metal",     _painted_metal_recipe("Painted metal — smooth coat with chips and dents", color=(0.22, 0.35, 0.58), roughness=0.30, chip_density=0.25))
 _reg("painted_metal_worn",_painted_metal_recipe("Worn painted metal — heavy chipping, exposed substrate", color=(0.28, 0.25, 0.22), roughness=0.55, chip_density=0.55, dent_intensity=0.28))
 
-# MAIN SHAPE — Javier Perez exact reconstruction (11 nodes, from live data)
+# MAIN SHAPE — pro exact reconstruction (11 nodes, from live data)
 _reg("main_shape", _main_shape_recipe())
 
-# PROFESSIONAL GRADE — Javier Perez Architecture (53+ nodes each)
+# PROFESSIONAL GRADE — pro Architecture (53+ nodes each)
 # Uses: clouds_2 + slope_blur cascade + edge_detect + flood_fill chain
 #       + multi_directional_warp + directionalwarp × N + highpass + histogram_scan
 _reg("pro_granite",     _pro_rock_recipe("Professional granite — crystalline rock, per-island variation", color=(0.52, 0.45, 0.40), roughness=0.88, macro_scale=2, mid_scale=5, detail_scale=10, disorder=0.45, shadow_factor=0.40, highlight_factor=1.40))
