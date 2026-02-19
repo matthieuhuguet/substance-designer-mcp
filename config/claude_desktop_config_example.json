@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "substance_designer": {
+      "command": "C:\\Users\\YOUR_USERNAME\\.local\\bin\\uv.exe",
+      "args": [
+        "run",
+        "--directory",
+        "C:\\PATH\\TO\\substance-designer-mcp\\server",
+        "python",
+        "sd_mcp_bridge.py",
+        "--port",
+        "9881"
+      ]
+    }
+  }
+}

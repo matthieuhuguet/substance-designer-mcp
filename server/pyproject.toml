@@ -1,0 +1,8 @@
+[project]
+name = "substance-designer-mcp"
+version = "0.1.0"
+description = "MCP bridge server for Substance Designer"
+requires-python = ">=3.12"
+dependencies = [
+    "mcp[cli]>=1.4.1",
+]
