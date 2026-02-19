@@ -839,6 +839,51 @@ async def apply_recipe(ctx: Context,
     })
 
 
+@mcp.tool()
+async def list_documentation(ctx: Context,
+                              category: str = "all",
+                              filter_text: str = "",
+                              node_name: str = "",
+                              action: str = "",
+                              query: str = "") -> str:
+    """
+    Browse the SD MCP embedded documentation knowledge base.
+    No internet required — all knowledge is built into the plugin.
+
+    Available categories:
+      all                — everything (large response, use filter_text)
+      atomic_nodes       — built-in nodes: blend, levels, blur, normal, warp, etc.
+      library_nodes      — library nodes: cells, perlin, flood_fill, histogram_scan, etc.
+      blend_modes        — all blend mode integers and descriptions
+      port_reference     — input/output port names for every node type
+      pbr_outputs        — PBR output usage tags and conventions
+      workflow           — step-by-step usage rules and best practices
+      concepts           — SD concepts: recipes, pro recipes, graph structure
+      shortcuts          — SD keyboard shortcuts
+      connection_patterns — common node chains (e.g. height→normal→AO)
+      node_categories    — node families and groupings
+      parameters         — parameter reference for common nodes
+
+    Special actions:
+      action="categories"         → list all available categories
+      action="search", query="X"  → search all docs for keyword X
+
+    Examples:
+      list_documentation(category="atomic_nodes", node_name="blend")
+      list_documentation(category="port_reference")
+      list_documentation(action="search", query="directionalwarp")
+      list_documentation(category="workflow")
+      list_documentation(category="pbr_outputs")
+    """
+    return await _async_send("list_documentation", {
+        "category": category,
+        "filter_text": filter_text,
+        "node_name": node_name,
+        "action": action,
+        "query": query,
+    })
+
+
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------

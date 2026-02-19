@@ -19,8 +19,8 @@ All notable changes to the Substance Designer MCP Plugin are documented here.
 - **Core materials**: wood×5, rock×6, metal×7, organic×9, soil×5, water_ice×4, gems×5
 - **Specialty**: concrete, brick, lava, asphalt, plaster, fabric, tile, specialty
 - **Heightmap styles** (8): cliff, rock, sand, cracked, mud, mountain, cobblestone, terrain
-- **MainShape** reconstruction (exact Javier Perez architecture, 11 nodes from live data)
-- Javier Perez node chain: clouds_2 → slope_blur×2 → edge_detect → flood_fill → flood_fill_to_gradient_2 → multi_directional_warp×2 → directionalwarp×3 → highpass → histogram_scan
+- **MainShape** reconstruction (pro architecture, 11 nodes from live data)
+- Pro node chain: clouds_2 → slope_blur×2 → edge_detect → flood_fill → flood_fill_to_gradient_2 → multi_directional_warp×2 → directionalwarp×3 → highpass → histogram_scan
 - All 79 recipes validated: 0 port failures, 0 crashes
 
 ### Bridge Server (v2.0.0)

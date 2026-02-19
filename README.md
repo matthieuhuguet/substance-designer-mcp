@@ -161,7 +161,7 @@ build_heightmap_graph(graph_name="CliffHM", style="cliff", detail_level=3, scale
 # → 9-node heightmap graph
 ```
 
-**Pro recipes (37–44 nodes, Javier Perez architecture):**
+**Pro recipes (37–44 nodes, professional architecture):**
 `pro_granite`, `pro_limestone`, `pro_sandstone`, `pro_basalt`, `pro_slate`,
 `pro_steel`, `pro_iron`, `pro_copper`,
 `pro_concrete`, `pro_concrete_aged`, `pro_concrete_smooth`
@@ -246,9 +246,9 @@ MIT License — see [LICENSE](LICENSE)
 
 ## Author
 
-Built by **matth** — first MCP integration for Substance Designer.
+Built by **[matthieuhuguet](https://github.com/matthieuhuguet)** / **[ZenRay](https://github.com/ZenRay)** — first MCP integration for Substance Designer.
 
-Architecture insights derived from deep analysis of professional Substance Designer graphs (Javier Perez workflow: clouds_2 → slope_blur → edge_detect → flood_fill → multi_directional_warp → directionalwarp chains).
+Pro recipe architecture based on deep analysis of professional Substance Designer node graph patterns: clouds_2 → slope_blur → edge_detect → flood_fill → multi_directional_warp → directionalwarp chains.
 
 ---
 

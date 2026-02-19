@@ -1,5 +1,5 @@
 """
-Substance Designer MCP Plugin v3.1.0
+Substance Designer MCP Plugin v3.3.0
 =====================================
 ARCHITECTURE
 ============
@@ -51,6 +51,7 @@ VERSION HISTORY
   3.0.0 - Full recipe engine, 34 materials, smart builder, all tools
   3.1.0 - SD crash fixes (SDValueInt2 on float, SDValueFloat on enum), build_heightmap bug fix
   3.2.x - Reporting bug fix (library node definition field), recipes v5.0 (78 recipes, JP architecture)
+  3.3.0 - list_documentation tool: embedded knowledge base for all SD nodes, ports, params, workflows
 """
 
 import sd
@@ -87,7 +88,7 @@ from sd.api.sbs.sdsbscompgraph import SDSBSCompGraph
 
 # ── Configuration ────────────────────────────────────────────────────────────
 DEFAULT_PORTS     = [9881]
-PLUGIN_VERSION    = (3, 2, 0)
+PLUGIN_VERSION    = (3, 3, 0)
 HEADER_SIZE       = 4
 COMMAND_TIMEOUT   = 120
 CLIENT_TIMEOUT    = 130
@@ -661,6 +662,8 @@ class CommandHandler:
             "smart_connect":          self.smart_connect,
             "arrange_nodes":          self.arrange_nodes,
             "execute_code":           self.execute_code,
+            # ── Documentation ──
+            "list_documentation":     self.list_documentation,
         }
         # Library node URL cache (populated lazily, session-lifetime)
         self._lib_url_cache = {}  # lower-case identifier -> url string
@@ -2129,6 +2132,45 @@ class CommandHandler:
             "arranged_nodes": len(nodes),
             "warning":        "arrange_nodes DESTROYS all connections in SD 15.",
         }
+
+    def list_documentation(self, category="all", filter_text="", node_name="",
+                            action="", topic="", query=""):
+        """
+        Browse the SD MCP internal documentation knowledge base.
+
+        Params:
+          category    — one of: all, atomic_nodes, library_nodes, blend_modes,
+                        port_reference, pbr_outputs, workflow, concepts, shortcuts,
+                        connection_patterns, node_categories, parameters
+          filter_text — substring filter applied to results (case-insensitive)
+          node_name   — get detailed info for a specific node (e.g. 'blur', 'blend')
+          action      — legacy compat alias for category ('categories', 'search')
+          topic       — unused (kept for compat with newer schema)
+          query       — alias for filter_text when action='search'
+        """
+        from . import sd_documentation as _doc
+
+        # action='search' compat → use query as filter_text
+        if action == "search" and query and not filter_text:
+            filter_text = query
+
+        # action='categories' → list available categories
+        if action == "categories":
+            return {
+                "status": "ok",
+                "categories": list(_doc.CATEGORIES.keys()),
+                "descriptions": _doc.CATEGORIES,
+            }
+
+        try:
+            result = _doc.query_documentation(
+                category=category or "all",
+                filter_text=filter_text or "",
+                node_name=node_name or "",
+            )
+            return {"status": "ok", "result": result}
+        except Exception as e:
+            return {"status": "error", "message": str(e)}
 
     def execute_code(self, code):
         """Execute arbitrary Python on the SD main thread. Keep it short."""
