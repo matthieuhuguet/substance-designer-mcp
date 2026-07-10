@@ -1,0 +1,4 @@
+interface:
+  display_name: "Substance Designer Learning"
+  short_description: "Study Designer tutorials and build MCP practice graphs."
+  default_prompt: "Use $substance-designer-learning to analyze this Substance Designer tutorial and create practice graphs."
