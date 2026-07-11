@@ -11,6 +11,15 @@ Treat Substance 3D Designer work as graph learning, not transcript summarization
 
 Use this skill only for Designer. If the task is Painter texturing, export presets, texture baking, or mesh painting, use a Painter-specific workflow instead.
 
+## Relearning Focus
+
+Keep this skill under active relearning for:
+
+- Designer node graph thinking: shape, mask, bevel, warp, blend, height, normal, AO, roughness, and base color.
+- Tutorial conversion: turn videos, playlists, screenshots, and notes into reusable graph drills.
+- MCP operation: verify the local Designer bridge, build or update `.sbs` packages, and save evidence.
+- Practice management: document graph names, node counts, failed nodes, next drills, and source links.
+
 ## Workflow
 
 1. Identify the source.

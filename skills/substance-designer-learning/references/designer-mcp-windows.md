@@ -18,9 +18,9 @@ Common wrong server name to remove or avoid:
 
 These paths were used successfully on this Windows workstation:
 
-- Workspace: `G:\open AI cohex\blender\substance 3d`
+- Workspace: `G:\open AI codex\substance 3d`
 - MCP repo: `https://github.com/matthieuhuguet/substance-designer-mcp.git`
-- Server directory: `G:\open AI cohex\blender\substance 3d\server`
+- Server directory: `G:\open AI codex\substance 3d\server`
 - Designer executable: `G:\SteamLibrary\steamapps\common\Substance 3D Designer 2026\Adobe Substance 3D Designer.exe`
 - User plugin directory: `C:\Users\Administrator\Documents\Allegorithmic\Substance Designer\python\sduserplugins\sd_mcp_plugin`
 - MCP TCP port: `9881`
@@ -34,7 +34,7 @@ The Codex config entry should look like:
 ```toml
 [mcp_servers.substance_designer]
 command = 'C:\Users\Administrator\AppData\Roaming\Python\Python311\Scripts\uv.exe'
-args = ['run', '--directory', 'G:\open AI cohex\blender\substance 3d\server', 'python', 'sd_mcp_bridge.py', '--port', '9881']
+args = ['run', '--directory', 'G:\open AI codex\substance 3d\server', 'python', 'sd_mcp_bridge.py', '--port', '9881']
 startup_timeout_sec = 120
 ```
 
@@ -79,7 +79,7 @@ Then poll port `9881` before retrying MCP calls.
 If Designer starts with no packages loaded, use `execute_sd_code`:
 
 ```python
-path = r"G:\open AI cohex\blender\substance 3d\SD_Playlist_Deep_Study.sbs"
+path = r"G:\open AI codex\substance 3d\SD_Playlist_Deep_Study.sbs"
 pkg = pkg_mgr.loadUserPackage(path, True, True)
 print("loaded", pkg.getFilePath())
 ```
